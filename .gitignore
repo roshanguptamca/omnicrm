@@ -185,3 +185,5 @@ reports
 
 # Developer requirements
 requirements/requirements-dev.txt
+
+src/db.sqlite3
