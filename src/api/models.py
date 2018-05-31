@@ -15,11 +15,13 @@ class Session(models.Model):
 class Task(models.Model):
     TASK_CHOICES = [
         ('CASE', 'Case'),
+        ('TASK', 'Task')
     ]
 
     task_type = models.CharField(choices=TASK_CHOICES, max_length=20)
     parent = models.ForeignKey('self', on_delete=models.CASCADE, null=True, default=None)
     krn = models.CharField(null=True, max_length=16)
+    description = models.TextField(null=True, default=None)
 
     def __str__(self):
         return 'Task (ID: {}, Type: {})'.format(self.pk, self.task_type)
@@ -28,7 +30,8 @@ class Task(models.Model):
 class Log(models.Model):
     LOG_CHOICES = [
         ('NOTE', 'Note'),
-        ('TASK', 'Task')
+        ('TASK', 'Task'),
+        ('CREDIT_REQUEST', 'Credit Request')
     ]
 
     log_type = models.CharField(choices=LOG_CHOICES, max_length=20)
